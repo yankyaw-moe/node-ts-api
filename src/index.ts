@@ -1,14 +1,23 @@
 import express from "express";
 import cors from "cors";
+import { PrismaClient } from "./generated/prisma";
+
+const prisma = new PrismaClient();
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 4000;
 
 app.use(cors());
 app.use(express.json());
 
 app.get("/health", (req, res) => {
   res.json({ status: "ok" });
+});
+
+// Example usage in a route
+app.get("/users", async (req, res) => {
+  const users = await prisma.user.findMany();
+  res.json(users);
 });
 
 const server = app.listen(PORT, () => {
