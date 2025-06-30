@@ -1,7 +1,7 @@
-import { PrismaClient } from "../../src/generated/prisma";
-import UserSeeder from "./user";
-import PostSeeder from "./post";
-import CommentSeeder from "./comment";
+import { PrismaClient } from '@prisma/client';
+import UserSeeder from './user';
+import PostSeeder from './post';
+import CommentSeeder from './comment';
 
 const prisma = new PrismaClient();
 

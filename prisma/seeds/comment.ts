@@ -1,5 +1,5 @@
-import { PrismaClient } from "../../src/generated/prisma";
-import { faker } from "@faker-js/faker";
+import { PrismaClient } from '@prisma/client';
+import { faker } from '@faker-js/faker';
 
 const prisma = new PrismaClient();
 async function CommentSeeder() {
@@ -10,9 +10,9 @@ async function CommentSeeder() {
     const postId = faker.number.int({ min: 1, max: 20 });
     data.push({ content, userId, postId });
   }
-  console.log("Comment seeding started...");
+  console.log('Comment seeding started...');
   await prisma.comment.createMany({ data });
-  console.log("Comment seeding done.");
+  console.log('Comment seeding done.');
 }
 
 export default CommentSeeder;
